@@ -20,6 +20,7 @@ struct Repository: Codable, Sendable {
     let language: String?
     let visibility: String
     let archived: Bool
+    let fork: Bool
     let owner: Owner
 
     enum CodingKeys: String, CodingKey {
@@ -36,6 +37,7 @@ struct Repository: Codable, Sendable {
         case language
         case visibility
         case archived
+        case fork
         case owner
     }
     
@@ -55,6 +57,7 @@ struct Repository: Codable, Sendable {
         language = try container.decodeIfPresent(String.self, forKey: .language)
         visibility = try container.decode(String.self, forKey: .visibility)
         archived = try container.decode(Bool.self, forKey: .archived)
+        fork = try container.decode(Bool.self, forKey: .fork)
         owner = try container.decode(Owner.self, forKey: .owner)
     }
 }
@@ -73,4 +76,8 @@ struct Owner: Codable {
         case htmlUrl = "html_url"
         case type
     }
+}
+
+enum ProgramExitError: Error {
+    case userQuit
 }

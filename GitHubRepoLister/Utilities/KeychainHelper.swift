@@ -39,4 +39,24 @@ struct KeychainHelper {
         
         return token
     }
+
+    static func removeToken(account: String) {
+        let query = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: account
+        ] as CFDictionary
+        SecItemDelete(query)
+    }
+
+    static func setActiveAccount(_ account: String) {
+        UserDefaults.standard.set(account, forKey: "activeAccount")
+    }
+
+    static func getActiveAccount() -> String? {
+        return UserDefaults.standard.string(forKey: "activeAccount")
+    }
+
+    static func removeActiveAccount() {
+        UserDefaults.standard.removeObject(forKey: "activeAccount")
+    }
 }
