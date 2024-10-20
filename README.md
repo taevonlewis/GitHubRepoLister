@@ -20,7 +20,7 @@ A command-line tool to manage your GitHub repositories, including listing, delet
 2. Download the .exe file for your OS.
 3. Run the binary directly from your terminal.
 
-**Via Homebrew**
+**Via Homebrew (NOT POSSIBLE YET!!!)**
 
 You can install the CLI tool using Homebrew if it’s available:
 
