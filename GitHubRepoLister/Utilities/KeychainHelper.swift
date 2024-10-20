@@ -1,3 +1,11 @@
+////
+//  KeychainHelper.swift
+//  GitHubRepoLister
+//
+//  Created by TaeVon Lewis on 10/19/24.
+//
+
+import Foundation
 import Security
 
 struct KeychainHelper {
@@ -9,7 +17,6 @@ struct KeychainHelper {
             kSecValueData: tokenData
         ] as CFDictionary
         
-        // Add or update the keychain item
         SecItemDelete(query)
         SecItemAdd(query, nil)
     }

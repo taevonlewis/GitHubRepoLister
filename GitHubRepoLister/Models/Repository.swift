@@ -1,3 +1,11 @@
+////
+//  Repository.swift
+//  GitHubRepoLister
+//
+//  Created by TaeVon Lewis on 10/19/24.
+//
+
+
 struct Repository: Codable, Sendable {
     let id: Int
     let name: String
@@ -29,6 +37,25 @@ struct Repository: Codable, Sendable {
         case visibility
         case archived
         case owner
+    }
+    
+    // Custom init if needed to handle decoding more carefully
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        fullName = try container.decode(String.self, forKey: .fullName)
+        privateRepo = try container.decode(Bool.self, forKey: .privateRepo)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        htmlUrl = try container.decode(String.self, forKey: .htmlUrl)
+        url = try container.decode(String.self, forKey: .url)
+        forks = try container.decode(Int.self, forKey: .forks)
+        openIssues = try container.decode(Int.self, forKey: .openIssues)
+        watchers = try container.decode(Int.self, forKey: .watchers)
+        language = try container.decodeIfPresent(String.self, forKey: .language)
+        visibility = try container.decode(String.self, forKey: .visibility)
+        archived = try container.decode(Bool.self, forKey: .archived)
+        owner = try container.decode(Owner.self, forKey: .owner)
     }
 }
 
