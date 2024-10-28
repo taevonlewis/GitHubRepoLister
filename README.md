@@ -1,7 +1,5 @@
 # GitHubRepoLister
 
-A command-line tool to manage your GitHub repositories, including listing, deleting, changing visibility, and batch operations for repositories. This tool supports multiple GitHub accounts, interactive mode, and efficient token management.
-
 ## Table of Contents
 - [Installation](#installation)
 - [Setting Up GitHub Token](#setting-up-github-token)
